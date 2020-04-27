@@ -1,0 +1,20 @@
+<html>
+ 
+<head></head>
+ 
+<body>
+	<p>Hi Srini,</p>
+	<p> </b></p>
+	<p>  The below person shown interested to join our StallionsCC club.</p>
+	<p> </b></p>
+    <p>Mail From : ${firstName}</p>	    
+    <p>Mobile #  : ${mobileNo}</p>
+    <p> </b></p>
+    <p>Message   : <b>${mailContent}</b></p>
+    <p> </b></p>
+    <p>Thanks!</p>
+    <p>${signature}</p>
+    <p>${location}</p>
+</body>
+ 
+</html>
