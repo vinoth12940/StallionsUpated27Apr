@@ -83,86 +83,132 @@
 	<div class="content-wrapper">
 		<section class="content-header">
 			<h1>
-				Tournament<small>detailed information of the Tournament</small>
+				Player<small>detailed information of the player</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li>Home</li>
-				<li>Tournament</li>
+				<li>Player</li>
 			</ol>
 		</section>
 		<section class="content">
 			<!-- form start -->
-			<form:form action="saveTournament" modelAttribute="tournament" method="POST" class="form-horizontal">
+			<form:form action="savePlayerDetails" modelAttribute="playerDetails" method="POST" class="form-horizontal">
 				<!-- need to associate this data with customer id -->
-				<form:hidden path="id" />
+				<form:hidden path="playersSk" />
 				<div class="row">
 					<div class="col-lg-12">
+						<div class="col-xs-4">
+							<div class="box box-primary">
+								<div class="box-header with-border">
+									<span class="box-title">Avatar</span>
+								</div>
+								<div class="box-body">
+									<div style="text-align: center;">
+										<img src="${pageContext.request.contextPath}/resources/img/no_user.png"
+											style="width: 200px; height: 200px;" alt="User"
+											class="img-circle" />
+									</div>
+								</div>
+								<div class="box-footer">
+									<div class="form-group">
+										<label for="inputFile" class="col-sm-3 control-label">Upload:
+										</label>
+										<div class="col-sm-7">
+											<input type="file" id="inputFile">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="col-xs-8">
 							<div class="box box-info">
 								<div class="box-header with-border">
-									<h3 class="box-title">Tournament Details</h3>
+									<h3 class="box-title">Personal Details</h3>
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
 									<div class="form-group">
-										<label for="tournamentName" class="col-sm-3 control-label">Tournament
+										<label for="first_Name" class="col-sm-3 control-label">First
 											Name</label>
 										<div class="col-md-9">
-											<form:input type="text" path="tournamentName" id="tournamentName"
-												class="form-control" placeholder="Tournament Name" />
+											<form:input type="text" path="first_Name" id="first_Name"
+												class="form-control" placeholder="First Name" />
 											<div class="has-error">
-												<form:errors path="tournamentName" class="help-inline" />
+												<form:errors path="first_Name" class="help-inline" />
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="startDate" class="col-sm-3 control-label">Start
-											Date</label>
+										<label for="last_Name" class="col-sm-3 control-label">Last
+											Name</label>
 										<div class="col-md-9">
-											<form:input type="date" path="startDate" id="startDate"
-												class="form-control" placeholder="Start Date" />
+											<form:input type="text" path="last_Name" id="last_Name"
+												class="form-control" placeholder="Last Name" />
 											<div class="has-error">
-												<form:errors path="startDate" class="help-inline" />
+												<form:errors path="last_Name" class="help-inline" />
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="endDate" class="col-sm-3 control-label">End
-												Date</label>
+										<label for="personal_Contact_Email_Id" class="col-sm-3 control-label">Email
+												</label>
 										<div class="col-md-9">
-											<form:input type="date" path="endDate" id="endDate"
-												class="form-control" placeholder="End Date" />
+											<form:input type="text" path="personal_Contact_Email_Id" id="personal_Contact_Email_Id"
+												class="form-control" placeholder="Email" />
 											<div class="has-error">
-												<form:errors path="endDate" class="help-inline" />
+												<form:errors path="personal_Contact_Email_Id" class="help-inline" />
 											</div>
 										</div>
 									</div>
 									<div class="form-group">
-											<label for="matchType" class="col-sm-3 control-label">Match
-												Type</label>
-											<div class="col-md-9">
-												<form:select path="matchType" id="matchType"
-													class="form-control" placeholder="Select match type">
-													<form:option value="">Select Match Type</form:option>
-													<form:option value="20/20">20/20</form:option>
-													<form:option value="25/25">25/25</form:option>
-													<form:option value="30/30">30/30</form:option>
-													<form:option value="Practice match">Practice match</form:option>
-													<form:option value="50 over match">50 over match</form:option>
-												</form:select>
-												<div class="has-error">
-													<form:errors path="matchType" class="help-inline" />
-												</div>
+										<label for="date_Of_Birth" class="col-sm-3 control-label">Date
+											of Birth</label>
+										<div class="col-md-9">
+											<form:input type="date" path="date_Of_Birth" id="date_Of_Birth"
+												class="form-control" placeholder="Date of birth" />
+											<div class="has-error">
+												<form:errors path="date_Of_Birth" class="help-inline" />
 											</div>
+										</div>
 									</div>
 									<div class="form-group">
-										<label for="noOfMatches" class="col-sm-3 control-label">No Of Matches
-											</label>
+										<label for="born_Place" class="col-sm-3 control-label">BornPlace</label>
 										<div class="col-md-9">
-											<form:input type="text" path="noOfMatches" id="noOfMatches"
-												class="form-control" placeholder="No Of Matches" />
+											<form:input type="text" path="born_Place" id="born_Place"
+												class="form-control" placeholder="BornPlace" />
 											<div class="has-error">
-												<form:errors path="noOfMatches" class="help-inline" />
+												<form:errors path="born_Place" class="help-inline" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="address" class="col-sm-3 control-label">Address</label>
+										<div class="col-md-9">
+											<form:input type="text" path="address" id="address"
+												class="form-control" placeholder="Address" />
+											<div class="has-error">
+												<form:errors path="address" class="help-inline" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="contract_Number" class="col-sm-3 control-label">Contact No</label>
+										<div class="col-md-9">
+											<form:input type="text" path="contract_Number" id="contract_Number"
+												class="form-control" placeholder="Address" />
+											<div class="has-error">
+												<form:errors path="contract_Number" class="help-inline" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="nick_Name" class="col-sm-3 control-label">Nick
+													Name</label>
+										<div class="col-md-9">
+											<form:input type="text" path="nick_Name" id="nick_Name"
+												class="form-control" placeholder="Nick Name" />
+											<div class="has-error">
+												<form:errors path="nick_Name" class="help-inline" />
 											</div>
 										</div>
 									</div>
@@ -176,19 +222,83 @@
 					<div class="col-lg-12">
 						<div class="box box-info">
 							<div class="box-header with-border">
+								<h3 class="box-title">Player skills</h3>
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body">
-								<div class="col-lg-12">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="batting_Style" class="col-sm-3 control-label">BattingStyle</label>
+												<div class="col-md-9">
+													<form:input type="text" path="batting_Style"
+														id="batting_Style" class="form-control"
+														placeholder="BattingStyle" />
+													<div class="has-error">
+														<form:errors path="batting_Style" class="help-inline" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="bowling_Style" class="col-sm-3 control-label">BowlingStyle</label>
+												<div class="col-md-9">
+													<form:input type="text" path="bowling_Style"
+														id="bowling_Style" class="form-control"
+														placeholder="BowlingStyle" />
+													<div class="has-error">
+														<form:errors path="bowling_Style" class="help-inline" />
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="role" class="col-sm-3 control-label">Role
+													</label>
+												<div class="col-md-9">
+													<form:input type="text" path="role"
+														id="role" class="form-control"
+														placeholder="Role" />
+													<div class="has-error">
+														<form:errors path="role" class="help-inline" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="status" class="col-sm-3 control-label">Status
+													</label>
+												<div class="col-md-9">
+													<form:select path="status" id="status"
+														class="form-control" placeholder="Select match type">
+														<form:option value="">Select status</form:option>
+														<form:option value="Y">Active</form:option>
+														<form:option value="N">InActive</form:option>
+													</form:select>
+													<div class="has-error">
+														<form:errors path="status" class="help-inline" />
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12">
 										<div class="col-lg-6">
 											<!-- <button type="submit" class="btn btn-default ">Cancel</button> -->
 										</div>
 										<div class="col-lg-6">						
 											<input type="submit" value="Save/Update" class="btn btn-primary pull-right" />
 										</div>
+									</div>
 								</div>
 								<p>
-									<a href="${pageContext.request.contextPath}/tournament/list">Back to List</a>
+									<a href="${pageContext.request.contextPath}/playerDetails/list">Back to List</a>
 								</p>
 							</div>
 						</div>

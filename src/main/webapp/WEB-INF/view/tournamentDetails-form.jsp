@@ -92,9 +92,9 @@
 		</section>
 		<section class="content">
 			<!-- form start -->
-			<form:form action="saveTournament" modelAttribute="tournament" method="POST" class="form-horizontal">
+			<form:form action="saveTournament" modelAttribute="tournamentDetails" method="POST" class="form-horizontal">
 				<!-- need to associate this data with customer id -->
-				<form:hidden path="id" />
+				<form:hidden path="tournamentSk" />
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="col-xs-8">
@@ -138,6 +138,17 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<label for="noOfMatches" class="col-sm-3 control-label">No Of Matches
+											</label>
+										<div class="col-md-9">
+											<form:input type="text" path="noOfMatches" id="noOfMatches"
+												class="form-control" placeholder="No Of Matches" />
+											<div class="has-error">
+												<form:errors path="noOfMatches" class="help-inline" />
+											</div>
+										</div>
+									</div>									
+									<div class="form-group">
 											<label for="matchType" class="col-sm-3 control-label">Match
 												Type</label>
 											<div class="col-md-9">
@@ -154,18 +165,18 @@
 													<form:errors path="matchType" class="help-inline" />
 												</div>
 											</div>
-									</div>
-									<div class="form-group">
-										<label for="noOfMatches" class="col-sm-3 control-label">No Of Matches
-											</label>
-										<div class="col-md-9">
-											<form:input type="text" path="noOfMatches" id="noOfMatches"
-												class="form-control" placeholder="No Of Matches" />
-											<div class="has-error">
-												<form:errors path="noOfMatches" class="help-inline" />
+										</div>
+										<div class="form-group">
+											<label for="stallionsTournamentResult" class="col-sm-3 control-label">StallionsTournamentResult
+												</label>
+											<div class="col-md-9">
+												<form:input type="text" path="stallionsTournamentResult" id="stallionsTournamentResult"
+													class="form-control" placeholder="stallionsTournamentResult" />
+												<div class="has-error">
+													<form:errors path="stallionsTournamentResult" class="help-inline" />
+												</div>
 											</div>
 										</div>
-									</div>
 								</div>
 								<!-- /.box-body -->
 							</div>
@@ -188,7 +199,7 @@
 										</div>
 								</div>
 								<p>
-									<a href="${pageContext.request.contextPath}/tournament/list">Back to List</a>
+									<a href="${pageContext.request.contextPath}/tournamentDetails/list">Back to List</a>
 								</p>
 							</div>
 						</div>

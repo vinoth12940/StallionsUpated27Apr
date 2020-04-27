@@ -15,28 +15,10 @@
 				</security:authorize>
 				<security:authorize access="hasAnyRole('ADMIN')">
 					<li><a href="${pageContext.request.contextPath}/register/showRegistrationForm" ><i class="fa fa-pencil fa-fw"></i> <span>Register New User</span></a></li>
-					<li>
-						<a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> <span>Player</span><i class="fa fa-fw fa-angle-down pull-right"></i></a>
-						<ul id="submenu-1" class="submenu collapse">
-							<li><a href="${pageContext.request.contextPath}/player/list"><i class="fa fa-angle-double-right"></i> List of Players</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-search"></i> <span>Tournament Details</span><i class="fa fa-fw fa-angle-down pull-right"></i></a>
-						<ul id="submenu-2" class="submenu collapse">
-							<li><a href="${pageContext.request.contextPath}/tournament/list"><i class="fa fa-angle-double-right"></i> List of Tournament</a></li>
-						</ul>
-					</li>                                              
-					<li>
-						<a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-search"></i> <span>Match Details</span><i class="fa fa-fw fa-angle-down pull-right"></i></a>
-						<ul id="submenu-3" class="submenu collapse">
-							<li><a href="${pageContext.request.contextPath}/addMatch"><i class="fa fa-angle-double-right"></i> Add Match</a></li>
-							<li><a href="${pageContext.request.contextPath}/addStallionsPlayers"><i class="fa fa-angle-double-right"></i> Add Stallions XI</a></li>
-							<li><a href="${pageContext.request.contextPath}/addOpponentPlayers"><i class="fa fa-angle-double-right"></i> Add Opponent XI</a></li>
-						</ul>
-					</li>
+					<li><a href="${pageContext.request.contextPath}/playerDetails/list"><i class="fa fa-angle-double-right"></i>Players Details</a></li>
+					<li><a href="${pageContext.request.contextPath}/tournamentDetails/list"><i class="fa fa-angle-double-right"></i>Tournament Details</a></li>
+					<li><a href="${pageContext.request.contextPath}/matchDetails/list"><i class="fa fa-angle-double-right"></i> Match Details</a></li>
 				</security:authorize>
-						
                 <li><a href="${pageContext.request.contextPath}/welcome/gallery"><i class="fa fa-image"></i> <span>Gallery</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/welcome/aboutUs"><i class="fa fa-book"></i> <span>About Us</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/welcome/contactUs"><i class="fa fa-mobile"></i> <span>Contact Us</span></a></li>

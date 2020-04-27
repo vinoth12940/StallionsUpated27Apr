@@ -30,9 +30,8 @@
     <script src = "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!--<link rel="stylesheet" href="styles/css/site2.css">-->
+
 </head>
-
-
 <body>
     <header class="main-header">
         <!-- Logo -->
@@ -80,123 +79,82 @@
 	<jsp:include page="navbar.jsp" />
 	
     <!-- Content Wrapper. Contains page content -->
-	<div class="content-wrapper">
-		<section class="content-header">
-			<h1>
-				Tournament<small>detailed information of the Tournament</small>
-			</h1>
-			<ol class="breadcrumb">
-				<li>Home</li>
-				<li>Tournament</li>
-			</ol>
-		</section>
-		<section class="content">
-			<!-- form start -->
-			<form:form action="saveTournament" modelAttribute="tournament" method="POST" class="form-horizontal">
-				<!-- need to associate this data with customer id -->
-				<form:hidden path="id" />
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="col-xs-8">
-							<div class="box box-info">
-								<div class="box-header with-border">
-									<h3 class="box-title">Tournament Details</h3>
-								</div>
-								<!-- /.box-header -->
-								<div class="box-body">
-									<div class="form-group">
-										<label for="tournamentName" class="col-sm-3 control-label">Tournament
-											Name</label>
-										<div class="col-md-9">
-											<form:input type="text" path="tournamentName" id="tournamentName"
-												class="form-control" placeholder="Tournament Name" />
-											<div class="has-error">
-												<form:errors path="tournamentName" class="help-inline" />
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="startDate" class="col-sm-3 control-label">Start
-											Date</label>
-										<div class="col-md-9">
-											<form:input type="date" path="startDate" id="startDate"
-												class="form-control" placeholder="Start Date" />
-											<div class="has-error">
-												<form:errors path="startDate" class="help-inline" />
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="endDate" class="col-sm-3 control-label">End
-												Date</label>
-										<div class="col-md-9">
-											<form:input type="date" path="endDate" id="endDate"
-												class="form-control" placeholder="End Date" />
-											<div class="has-error">
-												<form:errors path="endDate" class="help-inline" />
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-											<label for="matchType" class="col-sm-3 control-label">Match
-												Type</label>
-											<div class="col-md-9">
-												<form:select path="matchType" id="matchType"
-													class="form-control" placeholder="Select match type">
-													<form:option value="">Select Match Type</form:option>
-													<form:option value="20/20">20/20</form:option>
-													<form:option value="25/25">25/25</form:option>
-													<form:option value="30/30">30/30</form:option>
-													<form:option value="Practice match">Practice match</form:option>
-													<form:option value="50 over match">50 over match</form:option>
-												</form:select>
-												<div class="has-error">
-													<form:errors path="matchType" class="help-inline" />
-												</div>
-											</div>
-									</div>
-									<div class="form-group">
-										<label for="noOfMatches" class="col-sm-3 control-label">No Of Matches
-											</label>
-										<div class="col-md-9">
-											<form:input type="text" path="noOfMatches" id="noOfMatches"
-												class="form-control" placeholder="No Of Matches" />
-											<div class="has-error">
-												<form:errors path="noOfMatches" class="help-inline" />
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- /.box-body -->
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="box box-info">
-							<div class="box-header with-border">
-							</div>
-							<!-- /.box-header -->
-							<div class="box-body">
-								<div class="col-lg-12">
-										<div class="col-lg-6">
-											<!-- <button type="submit" class="btn btn-default ">Cancel</button> -->
-										</div>
-										<div class="col-lg-6">						
-											<input type="submit" value="Save/Update" class="btn btn-primary pull-right" />
-										</div>
-								</div>
-								<p>
-									<a href="${pageContext.request.contextPath}/tournament/list">Back to List</a>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</form:form>
-		</section>
-	</div>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>Players <small>Players information</small></h1>
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li>Players</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Players List</h3>
+                        </div>
+						<div class="box-header">
+                            <security:authorize access="hasAnyRole('ADMIN')">
+			
+								<!-- put new button: Add Player -->
+							
+								<input type="button" value="Add Player"
+									   onclick="window.location.href='showFormForAdd'; return false;"
+									   class="add-button"
+								/>
+			
+							</security:authorize>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="">
+                            <div class="table-responsive">
+                                <table id="example2" class="table table-striped table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                        	<th>S/No</th>
+											<th>Full Name</th>
+											<th>Status</th>
+											<%-- Only show "Action" column for managers or admin --%>
+											<security:authorize access="hasAnyRole('ADMIN')">
+												<th>Edit Player Information</th>
+											</security:authorize>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+										<!-- loop over and print our players -->
+										<c:forEach var="tempPlayer" items="${thePlayerDetails}">
+											<!-- construct an "update" link with customer id -->
+											<c:url var="updateLink" value="/playerDetails/showFormForUpdate">
+												<c:param name="playersSk" value="${tempPlayer.playersSk}" />
+											</c:url>					
+											<tr>
+												<td> ${tempPlayer.playersSk} </td>
+												<td> ${tempPlayer.first_Name} </td>
+												<td> ${tempPlayer.status} </td>
+												<security:authorize access="hasAnyRole('ADMIN')">
+						
+												<td>
+													<security:authorize access="hasAnyRole('ADMIN')">
+														<!-- display the update link -->
+														<a href="${updateLink}" class="btn btn-success custom-width" >Update</a>
+													</security:authorize>
+												</td>
+
+												</security:authorize>
+											</tr>
+										</c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="${pageContext.request.contextPath}/resources/js/jquery-2.2.3.min.js" ></script>
@@ -271,6 +229,7 @@
             $('#matchPerformance').highcharts(json);
             $('#matchPerformance1').highcharts(json);
         });
+        
     </script>
 
 </body>
